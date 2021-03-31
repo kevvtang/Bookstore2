@@ -5,9 +5,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.example.demo.Model.User;
 import com.example.demo.Service.UserService;
 
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -44,14 +47,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-
-		http.httpBasic().disable();
 		
+        
 		http.authorizeRequests().antMatchers(
+				"/**",
 				"/registration**",
 				"/js/**",
 				"/css/**",
-				"/img/**")
+				"/resources**",
+				"/png**")
 		.permitAll()
 		.anyRequest()
 		.authenticated()
@@ -66,7 +70,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 		.logoutSuccessUrl("/login?logout")
 		.permitAll();
+		
+        
 	}
+	
+
+	
+
 	
 	
 	

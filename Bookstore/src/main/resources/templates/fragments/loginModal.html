@@ -17,7 +17,6 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                !-- error message -->
 					<div th:if="${param.error}">
 						<div class="alert alert-danger">Invalid username or
 							password.</div>
@@ -28,11 +27,16 @@
                     <div>
                         <input type="hidden" name="_token" value="">
                         <label class="control-label">E-Mail Address*</label>
-                        <input type="email" class="form-control input-lg" name="email" value="" required>
+                        <!-- CHINS CODE <input type="email" class="form-control input-lg" name="email" value="" required> -->
+                        <input type="email" class = "form-control input-lg" id ="username" name = "username"	
+                        placeholder="Enter Email ID" autofocus="autofocus">
                     </div>
                     <div>
-                        <label class="control-label">Password*</label>
-                        <input type="password" minlength="1" class="form-control input-lg" name="password" required>
+                        <label class="control-label">Password*</label>: <input type="password"
+							id="password" name="password" class="form-control"
+							placeholder="Enter Password" />
+                        <!-- CHINS CODE <input type="password" minlength="1" class="form-control input-lg" name="password" required> -->
+
                     </div>
                     <br><a href="#reset-modal" data-toggle="modal" data-dismiss="modal">Forgot Password?</a>
                 </div>
