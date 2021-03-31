@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Check Out</title>
+    <link rel="stylesheet" href="/css/checkOut.css">
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+
+<main class="check-out-container">
+    <div class="row">
+        <div class="col">
+            <div class="content-container-col">
+                <hr>
+                <h3>Shipping Address</h3>
+                <div class="card address-payment-card">
+                    <h5 class="card-header">
+                        <button class="toggle-slide" onclick="addressToggle('#address1')"><i class="fa fa-caret-down"></i></button>
+                        123 Wayfar Street
+                        <input class="address float-right" type="checkbox">
+                    </h5>
+                    <div class="card-body address-card-body" id="address1">
+                        <p class="card-text">
+                            <button type="button" data-toggle="modal" data-target="#address-modal" class="btn btn-info btn-sm button float-right">
+                                <i class="fa fa-edit"></i> Edit
+                            </button>
+                            <span>123 Wayfar Street,</span></br>
+                            <span>Atlanta, Georgia, 33210</span></br>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card address-payment-card">
+                    <h5 class="card-header">
+                        <button class="toggle-slide" onclick="addressToggle('#address0')"><i class="fa fa-caret-down"></i></button>
+                        New Address
+                        <input class="address float-right" type="checkbox">
+                    </h5>
+                    <form class="card-body address-card-body" id="address0">
+                        <div>
+                            <input type="hidden" name="_token" value="">
+                            <label class="control-label">Street Address*</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div>
+                            <input type="hidden" name="_token" value="">
+                            <label class="control-label">Address Line 2</label>
+                            <input type="text" class="form-control" placeholder="Ex: Apt A108">
+                        </div>
+                        <div>
+                            <input type="hidden" name="_token" value="">
+                            <label class="control-label">City*</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div>
+                            <input type="hidden" name="_token" value="">
+                            <label class="control-label">State*</label>
+                            <div class="form-group">
+                                <div class="col-med-10">
+                                    <select class="form-control" id="state" name="state">
+                                        <option value="AK">Alaska</option>
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="AZ">Arizona</option>
+                                        <option value="CA">California</option>
+                                        <option value="CO">Colorado</option>
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DC">District of Columbia</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="FL">Florida</option>
+                                        <option value="GA">Georgia</option>
+                                        <option value="HI">Hawaii</option>
+                                        <option value="IA">Iowa</option>
+                                        <option value="ID">Idaho</option>
+                                        <option value="IL">Illinois</option>
+                                        <option value="IN">Indiana</option>
+                                        <option value="KS">Kansas</option>
+                                        <option value="KY">Kentucky</option>
+                                        <option value="LA">Louisiana</option>
+                                        <option value="MA">Massachusetts</option>
+                                        <option value="MD">Maryland</option>
+                                        <option value="ME">Maine</option>
+                                        <option value="MI">Michigan</option>
+                                        <option value="MN">Minnesota</option>
+                                        <option value="MO">Missouri</option>
+                                        <option value="MS">Mississippi</option>
+                                        <option value="MT">Montana</option>
+                                        <option value="NC">North Carolina</option>
+                                        <option value="ND">North Dakota</option>
+                                        <option value="NE">Nebraska</option>
+                                        <option value="NH">New Hampshire</option>
+                                        <option value="NJ">New Jersey</option>
+                                        <option value="NM">New Mexico</option>
+                                        <option value="NV">Nevada</option>
+                                        <option value="NY">New York</option>
+                                        <option value="OH">Ohio</option>
+                                        <option value="OK">Oklahoma</option>
+                                        <option value="OR">Oregon</option>
+                                        <option value="PA">Pennsylvania</option>
+                                        <option value="PR">Puerto Rico</option>
+                                        <option value="RI">Rhode Island</option>
+                                        <option value="SC">South Carolina</option>
+                                        <option value="SD">South Dakota</option>
+                                        <option value="TN">Tennessee</option>
+                                        <option value="TX">Texas</option>
+                                        <option value="UT">Utah</option>
+                                        <option value="VA">Virginia</option>
+                                        <option value="VT">Vermont</option>
+                                        <option value="WA">Washington</option>
+                                        <option value="WI">Wisconsin</option>
+                                        <option value="WV">West Virginia</option>
+                                        <option value="WY">Wyoming</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Zip Code*</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <button type="button" class="btn btn-info float-right submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="content-container-col">
+                <hr>
+                <h3>Payment Method</h3>
+                <div class="card address-payment-card">
+                    <h5 class="card-header">
+                        <button class="toggle-slide" onclick="paymentToggle('#payment1')"><i class="fa fa-caret-down"></i></button>
+                        Visa Card ending in 0219
+                        <input class="payment float-right" type="checkbox">
+                    </h5>
+                    <div class="card-body address-card-body" id="payment1">
+                        <p class="card-text">
+                            <button data-toggle="modal" data-target="#payment-modal" type="button" class="btn btn-info btn-sm button float-right">
+                                <i class="fa fa-edit"></i> Edit
+                            </button>
+                            <span>Name on card: Steven Johnson</span></br>
+                            <span>Expires: 07/2025</span></br>
+                        </p>
+                    </div>
+                    <div th:replace="fragments/addressPaymentModal"></div>
+                </div>
+
+
+
+                <div class="card address-payment-card">
+                    <h5 class="card-header">
+                        <button class="toggle-slide" onclick="addressToggle('#payment0')"><i class="fa fa-caret-down"></i></button>
+                        New Payment Method
+                        <input class="payment float-right" type="checkbox">
+                    </h5>
+                    <form class="card-body address-card-body" id="payment0">
+                        <div>
+                            <div>
+                                <label class="control-label">Card Number*</label>
+                                <input class="form-control input-lg" name="card-number" value="" required>
+                            </div>
+                            <div>
+                                <label class="control-label">Name on Card*</label>
+                                <input class="form-control input-lg" name="name" value="" required>
+                            </div>
+                            <div>
+                                <label class="control-label">Expiration Date*</label>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col">
+                                                <select class="form-control" id="month" name="month">
+                                                    <option value="01">01</option>
+                                                    <option value="02">02</option>
+                                                    <option value="03">03</option>
+                                                    <option value="04">04</option>
+                                                    <option value="05">05</option>
+                                                    <option value="06">06</option>
+                                                    <option value="07">07</option>
+                                                    <option value="08">08</option>
+                                                    <option value="09">09</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                </select>
+                                            </div>
+                                            <div class="col">
+                                                <select class="form-control" id="year" name="year">
+                                                    <option value="2021">2021</option>
+                                                    <option value="2022">2022</option>
+                                                    <option value="2023">2023</option>
+                                                    <option value="2024">2024</option>
+                                                    <option value="2025">2025</option>
+                                                    <option value="2026">2026</option>
+                                                    <option value="2027">2027</option>
+                                                    <option value="2028">2028</option>
+                                                    <option value="2029">2029</option>
+                                                    <option value="2030">2030</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div>
+                                <label class="control-label">Security Code*</label>
+                                <input class="form-control input-lg" name="security-code" value="" required>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-info float-right submit">Submit</button>
+                    </form>
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card order-summary-card">
+                <h4 class="card-header text-center">Order Summary</h4>
+                <div class="card-body">
+                    <table>
+                        <tr>
+                            <th>A Court Of Silver Flames</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span class="change">Quantity: 1</span><a data-toggle="modal" data-target="#quantity-modal" class="change">Change</a>
+                            </th>
+                            <td>$19.99</td>
+                        </tr>
+                    </table>
+                    <hr>
+
+                    <table>
+                        <tr>
+                            <th>Subtotal </th>
+                            <td>$39.98</td>
+                        </tr>
+                        <tr>
+                            <th>Shipping</th>
+                            <td>$0.00</td>
+                        </tr>
+                        <tr>
+                            <th>Tax</th>
+                            <td>$3.20</td>
+                        </tr>
+                        <tr>
+                            <th>Promo</th>
+                            <td>-$0.00</td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <table>
+                        <tr>
+                            <th><h5>Order Total</h5></th>
+                            <td><h5>$43.18</h5></td>
+                        </tr>
+                    </table>
+
+                    <div class="modal fade" id="quantity-modal" tabindex="-1" role="dialog" aria-labelledby="ordered" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Change Quantity</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <div>
+                                            <label class="control-label">Quantity</label>
+                                            <input type="number" class="form-control input-lg" name="quantity">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button data-toggle="modal" type="submit" class="btn btn-info" data-dismiss="modal">Confirm</button>
+                                    <button data-toggle="modal" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <button data-toggle="modal" data-target="#ordered-modal" class="btn btn-info btn-lg btn-block place-order">Place Order</button>
+
+
+                    <div class="modal fade" id="ordered-modal" tabindex="-1" role="dialog" aria-labelledby="ordered" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div>
+                                        <p> Thank you. Your order has been placed and a confirmation e-mail has been sent to your e-mail address. </p>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button data-toggle="modal" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group d-block d-md-flex mb-0">
+                        <div class="input-group-prepend promo-code">
+                            <input class="form-control border-1 z-depth-0" type="text" placeholder="Enter promo-code">
+                            <a href="#!" class="btn btn-warning btn-rounded" type="button">Apply</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+
+<div th:replace="fragments/footer"></div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+</script>
+<script>
+    function addressToggle(addressID) {
+        $(addressID).slideToggle('slow');
+    }
+</script>
+
+<script>
+    function paymentToggle(paymentID) {
+        $(paymentID).slideToggle('slow');
+    }
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('.address').click(function() {
+            $('.address').not(this).prop('checked', false);
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('.payment').click(function() {
+            $('.payment').not(this).prop('checked', false);
+        });
+    });
+</script>
+</html>
