@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/modalStyling.css">
+</head>
+<body>
+
+    <div th:replace="fragments/headerAdmin"></div>
+    <main>
+        <div class="row">
+            <div class="col table-header"><h3>Manage Books</h3></div>
+
+            <div class="col table-header">
+                <form class="navbar-search pl-0 ml-auto mt-3 mb-2 mt-md-0 mb-md-0 mr-3" action="">
+                    <div class="input-group d-block d-md-flex mb-0">
+                        <div class="input-group-prepend">
+                            <input class="form-control border-2 z-depth-0" id="searchbar" type="text" placeholder="Search Books">
+                            <a href="#!" class="btn btn-info btn-rounded" type="button"><i class="fa fa-search mx-2"></i></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col table-header">
+                <div class="float-right">
+                    <button data-toggle="modal" data-target="#add-modal" class="btn btn-info btn-sm">
+                        <i class="fa fa-plus"></i>
+                        Add New Book</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="add-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add New Book</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Title*</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Cover*</label>
+                                <input type="link" class="form-control" required>
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Author(s)*</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">ISBN*</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Category*</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Edition*</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Publisher*</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Publication Year*</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Quantity in Stock*</label>
+                                <input type="number" class="form-control" required>
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Min. Threshold*</label>
+                                <input type="number" class="form-control" required>
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Buying Price*</label>
+                                <input type="number" class="form-control" required>
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Selling Price*</label>
+                                <input type="number" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-info">Add</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Book</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Title</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Cover</label>
+                                <input type="link" class="form-control">
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Author(s)</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">ISBN</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Category</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Edition</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Publisher</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Publication Year</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Quantity in Stock</label>
+                                <input type="number" class="form-control">
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Min. Threshold</label>
+                                <input type="number" class="form-control">
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Buying Price</label>
+                                <input type="number" class="form-control">
+                            </div>
+                            <div>
+                                <input type="hidden" name="_token" value="">
+                                <label class="control-label">Selling Price</label>
+                                <input type="number" class="form-control">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-info" type="submit">Confirm</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+            <table class="table table-hover table-margin">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Cover</th>
+                    <th class="text-center">Author(s)</th>
+                    <th class="text-center">ISBN</th>
+                    <th class="text-center">Category</th>
+                    <th class="text-center">Edition</th>
+                    <th class="text-center">Publisher</th>
+                    <th class="text-center">Publication Year</th>
+                    <th class="text-center">Qty In Stock</th>
+                    <th class="text-center">Min. Threshold</th>
+                    <th class="text-center">Buying Price</th>
+                    <th class="text-center">Selling Price</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>1</th>
+                    <td class="text-nowrap"><a href="#">A Court of Silver Flames</a></td>
+                    <td><a href="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&product=path%5B/pimages/9781635577532_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D">Link</a></td>
+                    <td class="text-center text-nowrap">Sarah J. Maas</td>
+                    <td class="text-center">168119628X</td>
+                    <td class="text-center">Fiction - Adventure</td>
+                    <td class="text-center">1st</td>
+                    <td class="text-center">Bloomsbury Publishing</td>
+                    <td class="text-center">2021</td>
+                    <td class="text-center">5</td>
+                    <td class="text-center">3</td>
+                    <td class="text-center">$10.99</td>
+                    <td class="text-center">$19.99</td>
+                    <td class="text-center text-nowrap">
+                        <button data-target="#edit-modal" data-toggle="modal" type="button" class="btn btn-info btn-sm" title="edit">
+                            <i class="fa fa-edit"></i>
+                        </button>
+
+                        <button data-target="#delete-modal" data-toggle="modal" type="button" class="btn btn-danger btn-sm delete-button" title="delete">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="text-center text-nowrap">
+                        <button type="button" class="btn btn-info btn-sm">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm delete-button">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title">Delete Book</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" name="_token" value="">
+                            <p> Are you sure you would like to delete this book from the inventory? </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-info" type="submit">Confirm</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
