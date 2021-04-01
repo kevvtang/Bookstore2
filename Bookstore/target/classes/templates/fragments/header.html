@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light">
+
+        <a class="navbar-brand" href="/">
+            <div class="logo">Bookstore</div>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+                aria-controls="basicExampleNav1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+
+            <form class="navbar-search pl-0 ml-auto mt-3 mb-2 mt-md-0 mb-md-0 mr-3" action="">
+                <div class="input-group d-block d-md-flex mb-0">
+                    <div class="input-group-prepend">
+                        <input class="form-control border-2 z-depth-0" id="searchbar" type="text" placeholder="Search by Title, Author, Keyword or ISBN">
+                        <a href="/search" class="btn btn-info btn-rounded" type="button"><i class="fa fa-search mx-2"></i></a>
+                    </div>
+                </div>
+            </form>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <span class="fa fa-user"></span>Account
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item click-color" data-toggle="modal" data-target="#login-modal">Login</a>
+                        <a class="dropdown-item click-color" data-toggle="modal" data-target="#account-modal">Create Account</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item click-color" href="account#profile">Profile</a>
+                        <a class="dropdown-item click-color" href="/account#orders">Orders</a>
+                        <a class="dropdown-item click-color" href="/account#settings">Settings</a>
+                        <a sec:authorize="isAuthenticated()" a th:href="@{/logout}" class="dropdown-item click-color" href="#!">Log Out</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="/cart" class="nav-link"><span class="fa fa-shopping-cart"></span>Cart</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div th:replace="fragments/loginModal"></div>
+
+    <div th:replace="fragments/accountModal"></div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>

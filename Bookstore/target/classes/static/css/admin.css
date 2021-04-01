@@ -1,0 +1,28 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.table-header {
+    margin: 30px 20px 20px;
+}
+
+.row {
+    margin: 0px !important;
+}
+
+.table {
+    border-collapse: collapse;
+}
+
+.delete-button {
+    background-color: #d4542c !important;
+}
+
+.delete-button:hover {
+    filter: brightness(95%);
+}
+
+.log-out {
+    color: #d4542c !important;
+}

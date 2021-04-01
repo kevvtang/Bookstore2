@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	
+<head>
+    <meta charset="UTF-8">
+    <title>Book Store</title>
+    <link rel="stylesheet" href="/css/productPage.css">
+</head>
+<body>
+
+    <div th:replace="fragments/header"></div>
+
+    <main>
+    
+<!--     <table>
+        <tbody>
+                    <tr th:each="book : ${books}">
+                <td th:text="${book.BookID}">Product ID</td>
+                <td th:text="${book.title}">Name</td>
+                <td> <img th:src = "${book.coverPic}"></td>
+            </tr>
+    </tbody>
+    </table> -->
+
+
+        <div class="container-fluid explore d-flex justify-content-center">
+            <div class="row">
+                <div class="col">
+                    <img src="../resources/TheInfiniteBookShelf.png" height="560px" width="750">
+                </div>
+                <div class="col quote-container">
+                    <h1 class="quote text-center">"A room without books is like a body without a soul." - Cicero</h1>
+                    <a href="#scroll-target" class="btn btn-primary btn-lg btn-block browse-button">Browse Books</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="scroll-target">
+        <div class="container-xxl d-flex justify-content-center">
+            <div class="row d-flex justify-content-center">
+                <div class="card featured-card">
+                    <h5 class="card-header text-center">Featured</h5>
+                    <div class="col-lg featured-col">
+                        <div class="card-body">
+                            <div class="row-flex justify-content-center">
+                            <div id="featured-carousel" class="carousel slide carousel-three" data-ride="carousel">
+                                    <div class="carousel-inner three-inner row-md-3" role="listbox">
+                                        <div class="carousel-item carousel-item-three active">
+                                            <div class="col book">
+                                                <div class="card book-card">
+                                                    <img src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&product=path%5B/pimages/9781635577532_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D">
+                                                    <div class="card-body text-center">
+                                                        <a href="/book-details"><p class="card-title">A Court Of Silver Flames</p></a>
+                                                        <p class="card-text">Sarah J. Mass</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div th:each="book : ${books}" class="carousel-item carousel-item-three">
+                                            <div class="col book">
+                                                <div class="card book-card">
+                                                    <img th:src = "${book.coverPic}">
+                                                    <div class="card-body text-center">
+                                                        <a href="/book-details"><p th:text="${book.title}" class="card-title"></p></a>
+                                                        <p th:text="${book.authorName}"class="card-text"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <a class="carousel-control-prev w-auto" href="#featured-carousel" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next w-auto" href="#featured-carousel" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card top-seller-card">
+                    <h5 class="card-header text-center">Top-Sellers</h5>
+                    <div class="col-lg top-seller-col">
+                        <div class="card-body">
+                            <div class="row-flex justify-content-center">
+                                <div id="top-seller-carousel" class="carousel slide carousel-three" data-ride="carousel">
+                                    <div class="carousel-inner three-inner row-md-3" role="listbox">
+                                        <div class="carousel-item carousel-item-three active">
+                                            <div class="col book">
+                                                <div class="card book-card">
+                                                    <img src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&product=path%5B/pimages/9781635577532_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D">
+                                                    <div class="card-body text-center">
+                                                        <a href="/book-details"><p class="card-title">A Court Of Silver Flames</p></a>
+                                                        <p class="card-text">Sarah J. Mass</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item carousel-item-three">
+                                            <div class="col book">
+                                                <div class="card book-card">
+                                                    <img src="https://prodimage.images-bn.com/pimages/9781250619358_p0_v1_s600x595.jpg">
+                                                    <div class="card-body text-center">
+                                                        <a href="/book-details"><p class="card-title">A Court Of Silver Flames</p></a>
+                                                        <p class="card-text">Sarah J. Mass</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item carousel-item-three">
+                                            <div class="col book">
+                                                <div class="card book-card">
+                                                    <img src="https://prodimage.images-bn.com/pimages/9781984882158_p0_v2_s550x406.jpg">
+                                                    <div class="card-body text-center">
+                                                        <a href="/book-details"><p class="card-title">A Court Of Silver Flames</p></a>
+                                                        <p class="card-text">Sarah J. Mass</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev w-auto" href="#top-seller-carousel" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next w-auto" href="#top-seller-carousel" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-xxl d-flex justify-content-center fiction-container">
+            <div class="card fiction-card">
+                <div class="dropdown">
+                    <h5 class="card-header text-center">
+                    <a class="dropdown-toggle section-header" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Fiction</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item click-color" href="#!">General Fiction</a>
+                        <a class="dropdown-item click-color" href="#!">Horror</a>
+                        <a class="dropdown-item click-color" href="#!">Romance</a>
+                        <a class="dropdown-item click-color" href="#!">Thrillers</a>
+                        <a class="dropdown-item click-color" href="#!">Poetry</a>
+                        <a class="dropdown-item click-color" href="#!">Mystery & Crime</a>
+                        <a class="dropdown-item click-color" href="#!">Science Fiction & Fantasy</a>
+                    </div>
+                    </h5>
+                </div>
+
+                <div class="col-lg fiction-col">
+                    <div class="card-body">
+                        <div class="row-flex justify-content-center">
+                            <div id="fiction-carousel" class="carousel slide carousel-six" data-ride="carousel">
+                                <div class="carousel-inner six-inner row-md-3" role="listbox">
+                                    <div class="carousel-item carousel-item-six active">
+                                        <div class="col book">
+                                            <div class="card book-card">
+                                                <img src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&product=path%5B/pimages/9781635577532_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D">
+                                                <div class="card-body text-center">
+                                                    <a href="/book-details"><p class="card-title">A Court Of Silver Flames</p></a>
+                                                    <p class="card-text">Sarah J. Mass</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item carousel-item-six">
+                                        <div class="col book">
+                                            <div class="card book-card">
+                                                <img src="https://prodimage.images-bn.com/pimages/9781250619358_p0_v1_s600x595.jpg">
+                                                <div class="card-body text-center">
+                                                    <a href="/book-details"><p class="card-title">A Court Of Silver Flames</p></a>
+                                                    <p class="card-text">Sarah J. Mass</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev w-auto" href="#fiction-carousel" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next w-auto" href="#fiction-carousel" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-xxl d-flex justify-content-center nonfiction-container">
+            <div class="card nonfiction-card">
+                <div class="dropdown">
+                    <h5 class="card-header text-center">
+                        <a class="dropdown-toggle section-header" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Nonfiction</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item click-color" href="#!">General Nonfiction</a>
+                            <a class="dropdown-item click-color" href="#!">Biography</a>
+                            <a class="dropdown-item click-color" href="#!">Art</a>
+                            <a class="dropdown-item click-color" href="#!">Education</a>
+                            <a class="dropdown-item click-color" href="#!">Health</a>
+                            <a class="dropdown-item click-color" href="#!">Science & Technology</a>
+                            <a class="dropdown-item click-color" href="#!">Crafts & Hobbies</a>
+                        </div>
+                    </h5>
+                </div>
+
+                <div class="col-lg nonfiction-col">
+                    <div class="card-body">
+                        <div class="row-flex justify-content-center">
+                            <div id="nonfiction-carousel" class="carousel slide carousel-six" data-ride="carousel">
+                                <div class="carousel-inner six-inner row-md-3" role="listbox">
+                                    <div class="carousel-item carousel-item-six active">
+                                        <div class="col book">
+                                            <div class="card book-card">
+                                                <img src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&product=path%5B/pimages/9781635577532_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D">
+                                                <div class="card-body text-center">
+                                                    <a href="/book-details"><p class="card-title">A Court Of Silver Flames</p></a>
+                                                    <p class="card-text">Sarah J. Mass</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item carousel-item-six">
+                                        <div class="col book">
+                                            <div class="card book-card">
+                                                <img src="https://prodimage.images-bn.com/pimages/9781250619358_p0_v1_s600x595.jpg">
+                                                <div class="card-body text-center">
+                                                    <a href="/book-details"><p class="card-title">A Court Of Silver Flames</p></a>
+                                                    <p class="card-text">Sarah J. Mass</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev w-auto" href="#nonfiction-carousel" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next w-auto" href="#nonfiction-carousel" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+    </main>
+
+    <div th:replace="fragments/footer"></div>
+
+</body>
+<script>
+    $('#featured-carousel, #top-seller-carousel, #fiction-carousel, #nonfiction-carousel').carousel({
+        interval: 15000
+    })
+
+    $('.carousel-three .carousel-item-three').each(function(){
+        var minPerSlide = 3;
+        var next = $(this).next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        next.children(':first-child').clone().appendTo($(this));
+
+        for (var i=0;i < minPerSlide - 2;i++) {
+            next=next.next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+
+            next.children(':first-child').clone().appendTo($(this));
+        }
+    });
+
+    $('.carousel-six .carousel-item-six').each(function(){
+        var minPerSlide = 5;
+        var next = $(this).next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        next.children(':first-child').clone().appendTo($(this));
+
+        for (var i=0;i < minPerSlide - 2;i++) {
+            next=next.next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+
+            next.children(':first-child').clone().appendTo($(this));
+        }
+    });
+
+
+</script>
+</html>
