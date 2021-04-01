@@ -1,12 +1,14 @@
 package com.example.demo.Model;
 
+import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
+
 import java.util.*;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
  
-@SuppressWarnings("serial")
+
 public class UserDetail implements UserDetails {
     private User user;
      
@@ -34,16 +36,17 @@ public class UserDetail implements UserDetails {
     public String getUsername() {
         return user.getEmail();
     }
-    public String getFirstname() {
+    public String getFirstName() {
     	return user.getFirstName();
     }
     
-    public String getLastname() {
+    public String getLastName() {
     	return user.getLastName();
     }
     
     public String getFullname() {
-    	return user.getFirstName() + user.getLastName();
+    	System.out.println(user.getFirstName());
+    	return user.getFirstName();
     }
  
     @Override
@@ -66,6 +69,11 @@ public class UserDetail implements UserDetails {
         return true;
     }
     
+    public User getUser() {
+    	return this.user;
+    	
+    }
+   
 
     
 }

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.DTO.UserRegistrationDto;
 import com.example.demo.Model.Role;
 import com.example.demo.Model.User;
+import com.example.demo.Model.UserDetail;
 import com.example.demo.Repository.UserRepository;
 
 @Service
@@ -46,7 +47,7 @@ public class UserServiceImpl implements UserService{
 		if (user == null) {
 			throw new UsernameNotFoundException("Invalid username or password.");
 		}
-		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
+		return new UserDetail(user);
 	}
 	
 	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
