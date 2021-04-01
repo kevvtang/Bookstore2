@@ -29,13 +29,13 @@
                     <h2>Profile</h2>
                     <hr>
                     <p>
-                        <a id="name"><strong>Name:</strong> Steven Johnson</a>
+                        <a id="name"><strong> Name: </strong> <span sec:authentication="principal.firstname"></span>
                         <button type="button" data-toggle="modal" data-target="#name-modal" class="btn btn-info btn-sm button">
                             <i class="fa fa-edit"></i> Edit
                         </button>
                     </p>
                     <p>
-                        <strong>Email:</strong> stevenjohnson@gmail.com
+                        <strong>Email:</strong><span sec:authentication="principal.username"></span>
                     </p>
                     <p>
                         <strong>Phone Number:</strong> 404-404-4004
