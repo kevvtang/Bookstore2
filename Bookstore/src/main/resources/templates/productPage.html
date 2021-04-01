@@ -45,37 +45,27 @@
                         <div class="card-body">
                             <div class="row-flex justify-content-center">
                             <div id="featured-carousel" class="carousel slide carousel-three" data-ride="carousel">
-                                    <div class="carousel-inner three-inner row-md-3" role="listbox">
-                                        <div class="carousel-item carousel-item-three active">
-                                            <div class="col book">
-                                                <div class="card book-card">
-                                                    <img src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&product=path%5B/pimages/9781635577532_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D">
-                                                    <div class="card-body text-center">
-                                                        <a href="/book-details"><p class="card-title">A Court Of Silver Flames</p></a>
-                                                        <p class="card-text">Sarah J. Mass</p>
-                                                    </div>
+                                <div class="carousel-inner three-inner row-md-3" role="listbox">
+                                    <div th:each="book : ${books}" th:if="${book.category} == 'Non-Fiction'" class="carousel-item carousel-item-three">
+                                        <div class="col book">
+                                            <div class="card book-card">
+                                                <img th:src = "${book.coverPic}">
+                                                <div class="card-body text-center">
+                                                    <a href="/book-details"><p th:text="${book.title}" class="card-title"></p></a>
+                                                    <p th:text="${book.authorName}"class="card-text"></p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div th:each="book : ${books}" class="carousel-item carousel-item-three">
-                                            <div class="col book">
-                                                <div class="card book-card">
-                                                    <img th:src = "${book.coverPic}">
-                                                    <div class="card-body text-center">
-                                                        <a href="/book-details"><p th:text="${book.title}" class="card-title"></p></a>
-                                                        <p th:text="${book.authorName}"class="card-text"></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <a class="carousel-control-prev w-auto" href="#featured-carousel" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next w-auto" href="#featured-carousel" role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev w-auto" href="#featured-carousel" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next w-auto" href="#featured-carousel" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
                                 </div>
                             </div>
                         </div>
@@ -89,35 +79,13 @@
                             <div class="row-flex justify-content-center">
                                 <div id="top-seller-carousel" class="carousel slide carousel-three" data-ride="carousel">
                                     <div class="carousel-inner three-inner row-md-3" role="listbox">
-                                        <div class="carousel-item carousel-item-three active">
+                                        <div th:each="book : ${books}" th:if="${book.category} == 'Non-Fiction'" class="carousel-item carousel-item-three">
                                             <div class="col book">
                                                 <div class="card book-card">
-                                                    <img src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&product=path%5B/pimages/9781635577532_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D">
+                                                    <img th:src = "${book.coverPic}">
                                                     <div class="card-body text-center">
-                                                        <a href="/book-details"><p class="card-title">A Court Of Silver Flames</p></a>
-                                                        <p class="card-text">Sarah J. Mass</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="carousel-item carousel-item-three">
-                                            <div class="col book">
-                                                <div class="card book-card">
-                                                    <img src="https://prodimage.images-bn.com/pimages/9781250619358_p0_v1_s600x595.jpg">
-                                                    <div class="card-body text-center">
-                                                        <a href="/book-details"><p class="card-title">A Court Of Silver Flames</p></a>
-                                                        <p class="card-text">Sarah J. Mass</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="carousel-item carousel-item-three">
-                                            <div class="col book">
-                                                <div class="card book-card">
-                                                    <img src="https://prodimage.images-bn.com/pimages/9781984882158_p0_v2_s550x406.jpg">
-                                                    <div class="card-body text-center">
-                                                        <a href="/book-details"><p class="card-title">A Court Of Silver Flames</p></a>
-                                                        <p class="card-text">Sarah J. Mass</p>
+                                                        <a href="/book-details"><p th:text="${book.title}" class="card-title"></p></a>
+                                                        <p th:text="${book.authorName}"class="card-text"></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -141,44 +109,33 @@
 
         <div class="container-xxl d-flex justify-content-center fiction-container">
             <div class="card fiction-card">
-                <div class="dropdown">
-                    <h5 class="card-header text-center">
-                    <a class="dropdown-toggle section-header" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Fiction</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item click-color" href="#!">General Fiction</a>
-                        <a class="dropdown-item click-color" href="#!">Horror</a>
-                        <a class="dropdown-item click-color" href="#!">Romance</a>
-                        <a class="dropdown-item click-color" href="#!">Thrillers</a>
-                        <a class="dropdown-item click-color" href="#!">Poetry</a>
-                        <a class="dropdown-item click-color" href="#!">Mystery & Crime</a>
-                        <a class="dropdown-item click-color" href="#!">Science Fiction & Fantasy</a>
-                    </div>
+<!--                <div class="dropdown">-->
+                    <h5 class="card-header text-center"> Fiction
+<!--                    <a class="dropdown-toggle section-header" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Fiction</a>-->
+<!--                    <div class="dropdown-menu">-->
+<!--                        <a class="dropdown-item click-color" href="#!">General Fiction</a>-->
+<!--                        <a class="dropdown-item click-color" href="#!">Horror</a>-->
+<!--                        <a class="dropdown-item click-color" href="#!">Romance</a>-->
+<!--                        <a class="dropdown-item click-color" href="#!">Thrillers</a>-->
+<!--                        <a class="dropdown-item click-color" href="#!">Poetry</a>-->
+<!--                        <a class="dropdown-item click-color" href="#!">Mystery & Crime</a>-->
+<!--                        <a class="dropdown-item click-color" href="#!">Science Fiction & Fantasy</a>-->
+<!--                    </div>-->
                     </h5>
-                </div>
+<!--                </div>-->
 
                 <div class="col-lg fiction-col">
                     <div class="card-body">
                         <div class="row-flex justify-content-center">
                             <div id="fiction-carousel" class="carousel slide carousel-six" data-ride="carousel">
                                 <div class="carousel-inner six-inner row-md-3" role="listbox">
-                                    <div class="carousel-item carousel-item-six active">
+                                    <div th:each="book : ${books}" th:if="${book.category} == 'Fiction'" class="carousel-item carousel-item-six">
                                         <div class="col book">
                                             <div class="card book-card">
-                                                <img src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&product=path%5B/pimages/9781635577532_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D">
+                                                <img th:src = "${book.coverPic}">
                                                 <div class="card-body text-center">
-                                                    <a href="/book-details"><p class="card-title">A Court Of Silver Flames</p></a>
-                                                    <p class="card-text">Sarah J. Mass</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item carousel-item-six">
-                                        <div class="col book">
-                                            <div class="card book-card">
-                                                <img src="https://prodimage.images-bn.com/pimages/9781250619358_p0_v1_s600x595.jpg">
-                                                <div class="card-body text-center">
-                                                    <a href="/book-details"><p class="card-title">A Court Of Silver Flames</p></a>
-                                                    <p class="card-text">Sarah J. Mass</p>
+                                                    <a href="/book-details"><p th:text="${book.title}" class="card-title"></p></a>
+                                                    <p th:text="${book.authorName}"class="card-text"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -201,44 +158,33 @@
 
         <div class="container-xxl d-flex justify-content-center nonfiction-container">
             <div class="card nonfiction-card">
-                <div class="dropdown">
-                    <h5 class="card-header text-center">
-                        <a class="dropdown-toggle section-header" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Nonfiction</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item click-color" href="#!">General Nonfiction</a>
-                            <a class="dropdown-item click-color" href="#!">Biography</a>
-                            <a class="dropdown-item click-color" href="#!">Art</a>
-                            <a class="dropdown-item click-color" href="#!">Education</a>
-                            <a class="dropdown-item click-color" href="#!">Health</a>
-                            <a class="dropdown-item click-color" href="#!">Science & Technology</a>
-                            <a class="dropdown-item click-color" href="#!">Crafts & Hobbies</a>
-                        </div>
+<!--                <div class="dropdown">-->
+                    <h5 class="card-header text-center"> Nonfiction
+<!--                        <a class="dropdown-toggle section-header" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Nonfiction</a>-->
+<!--                        <div class="dropdown-menu">-->
+<!--                            <a class="dropdown-item click-color" href="#!">General Nonfiction</a>-->
+<!--                            <a class="dropdown-item click-color" href="#!">Biography</a>-->
+<!--                            <a class="dropdown-item click-color" href="#!">Art</a>-->
+<!--                            <a class="dropdown-item click-color" href="#!">Education</a>-->
+<!--                            <a class="dropdown-item click-color" href="#!">Health</a>-->
+<!--                            <a class="dropdown-item click-color" href="#!">Science & Technology</a>-->
+<!--                            <a class="dropdown-item click-color" href="#!">Crafts & Hobbies</a>-->
+<!--                        </div>-->
                     </h5>
-                </div>
+<!--                </div>-->
 
                 <div class="col-lg nonfiction-col">
                     <div class="card-body">
                         <div class="row-flex justify-content-center">
                             <div id="nonfiction-carousel" class="carousel slide carousel-six" data-ride="carousel">
                                 <div class="carousel-inner six-inner row-md-3" role="listbox">
-                                    <div class="carousel-item carousel-item-six active">
+                                    <div th:each="book : ${books}" th:if="${book.category} == 'Non-Fiction'" class="carousel-item carousel-item-six">
                                         <div class="col book">
                                             <div class="card book-card">
-                                                <img src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&product=path%5B/pimages/9781635577532_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D">
+                                                <img th:src = "${book.coverPic}">
                                                 <div class="card-body text-center">
-                                                    <a href="/book-details"><p class="card-title">A Court Of Silver Flames</p></a>
-                                                    <p class="card-text">Sarah J. Mass</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item carousel-item-six">
-                                        <div class="col book">
-                                            <div class="card book-card">
-                                                <img src="https://prodimage.images-bn.com/pimages/9781250619358_p0_v1_s600x595.jpg">
-                                                <div class="card-body text-center">
-                                                    <a href="/book-details"><p class="card-title">A Court Of Silver Flames</p></a>
-                                                    <p class="card-text">Sarah J. Mass</p>
+                                                    <a href="/book-details"><p th:text="${book.title}" class="card-title"></p></a>
+                                                    <p th:text="${book.authorName}"class="card-text"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -305,6 +251,14 @@
 
             next.children(':first-child').clone().appendTo($(this));
         }
+    });
+
+    $(function (){
+
+        $('#featured-carousel').find('div.carousel-item').first().addClass('active');
+        $('#top-seller-carousel').find('div.carousel-item').first().addClass('active');
+        $('#fiction-carousel').find('div.carousel-item').first().addClass('active');
+        $('#nonfiction-carousel').find('div.carousel-item').first().addClass('active');
     });
 
 
