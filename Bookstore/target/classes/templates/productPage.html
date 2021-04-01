@@ -12,6 +12,17 @@
     <div th:replace="fragments/header"></div>
 
     <main>
+    
+<!--     <table>
+        <tbody>
+                    <tr th:each="book : ${books}">
+                <td th:text="${book.BookID}">Product ID</td>
+                <td th:text="${book.title}">Name</td>
+                <td> <img th:src = "${book.coverPic}"></td>
+            </tr>
+    </tbody>
+    </table> -->
+
 
         <div class="container-fluid explore d-flex justify-content-center">
             <div class="row">
@@ -40,26 +51,23 @@
                                                 <div class="card book-card">
                                                     <img src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&product=path%5B/pimages/9781635577532_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D">
                                                     <div class="card-body text-center">
-                                                        <a href="/book-details"><p class="card-title"><span th:href="${book?.title}"> </span></p></a>
+                                                        <a href="/book-details"><p class="card-title">A Court Of Silver Flames</p></a>
                                                         <p class="card-text">Sarah J. Mass</p>
-                                                    </div>
-                                                </div>
-                                            </div>  
-                                        </div>
-                                        
-                                        <div th:each = "book: ${book}" class="carousel-item carousel-item-three">
-                                        
-                                            <div class="col book">
-                                                <div class="card book-card">
-                                                    <img src="https://prodimage.images-bn.com/pimages/9781250619358_p0_v1_s600x595.jpg">
-                                                    <div class="card-body text-center">
-                                                        <a href="/book-details"><p class="card-title"><span th:text = "${book?.title}"></span></p></a>
-                                                        <p class="card-text"><span th:text="${book?.authorName}"></span></p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        
+                                        <div th:each="book : ${books}" class="carousel-item carousel-item-three">
+                                            <div class="col book">
+                                                <div class="card book-card">
+                                                    <img th:src = "${book.coverPic}">
+                                                    <div class="card-body text-center">
+                                                        <a href="/book-details"><p th:text="${book.title}" class="card-title"></p></a>
+                                                        <p th:text="${book.authorName}"class="card-text"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     <a class="carousel-control-prev w-auto" href="#featured-carousel" role="button" data-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                         <span class="sr-only">Previous</span>

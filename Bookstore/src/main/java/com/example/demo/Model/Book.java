@@ -15,43 +15,43 @@ public class Book
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int BookID;
+	public int BookID;
 
     @Column
-    private String isbn;
+    public String ISBN;
 
     @Column
-    private String category;
+    public String category;
 
     @Column
-    private String authorName;
+    public String authorName;
     
     @Column
-    private String title;
+    public String title;
     
     @Column
-    private String coverPic;
+    public String coverPic;
     
     @Column
-    private String publisher;
+    public String publisher;
     
     @Column
-    private int publicationYear;
+    public int publicationYear;
     
     @Column
-    private int edition;
+    public int edition;
     
     @Column
-    private int quantityStock;
+    public int quantityStock;
     
     @Column
-    private int minThreshold;
+    public int minThreshold;
     
     @Column
-    private double buyingPrice;
+    public double buyingPrice;
     
     @Column
-    private double sellingPrice;
+    public double sellingPrice;
 
 	public int getBookID() {
 		return BookID;
@@ -62,11 +62,11 @@ public class Book
 	}
 
 	public String getIsbn() {
-		return isbn;
+		return ISBN;
 	}
 
 	public void setIsbn(String isbn) {
-		this.isbn = isbn;
+		this.ISBN = isbn;
 	}
 
 	public String getCategory() {

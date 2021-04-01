@@ -1,6 +1,7 @@
 package com.example.demo.Web;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.WebUtils;
 
+import com.example.demo.Model.Book;
 import com.example.demo.Model.User;
 import com.example.demo.Repository.UserRepository;
+import com.example.demo.Service.BookService;
 
 @Controller
 
@@ -23,8 +26,14 @@ public class MainController {
 	@Autowired
 	private UserRepository userRepository;
 	
+    @Autowired
+    private BookService bookService;
+	
 	@GetMapping("/")
-	public String home() {
+	public String home(Model model) {
+        List<Book> books = bookService.listAll();
+        model.addAttribute("books", books);
+         
 		return "productPage";
 	}
 	
