@@ -27,7 +27,7 @@ public class User {
 	public String firstname;
 	
 	@Column(name = "last_name")
-	private String lastName;
+	public String lastName;
 	
 	private String email;
 	private String password;
@@ -47,7 +47,6 @@ public class User {
 	
 	public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
 		super();
-
 		this.firstname = firstName;
 		this.lastName = lastName;
 		this.email = email;
