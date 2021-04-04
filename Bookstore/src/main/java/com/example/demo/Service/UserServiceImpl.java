@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import com.example.demo.Exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -52,6 +53,28 @@ public class UserServiceImpl implements UserService{
 	
 	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
+	}
+
+	public void updateResetPasswordToken(String token, String email) throws UserNotFoundException {
+		User user = userRepository.findByEmail(email);
+		if (user != null) {
+			user.setResetPasswordToken(token);
+			userRepository.save(user);
+		} else {
+			throw new UserNotFoundException("Could not find any customer with email " + email);
+		}
+	}
+
+	public User getByToken(String resetPasswordToken) {
+		return userRepository.findByResetPasswordToken(resetPasswordToken);
+	}
+
+	public void updatePassword(User user, String newPassword) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encodedPassword = passwordEncoder.encode(newPassword);
+		user.setPassword(encodedPassword);
+		user.setResetPasswordToken(null);
+		userRepository.save(user);
 	}
 
 }

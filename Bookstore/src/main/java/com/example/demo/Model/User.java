@@ -28,6 +28,9 @@ public class User {
 	
 	@Column(name = "last_name")
 	public String lastName;
+
+	@Column(name = "reset_password_token")
+	private String resetPasswordToken;
 	
 	private String email;
 	private String password;
@@ -101,8 +104,12 @@ public class User {
 	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
 	}
-	
-	
-	
-	
+
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
+	}
 }

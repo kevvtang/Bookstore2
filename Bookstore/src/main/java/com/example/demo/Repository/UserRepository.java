@@ -8,4 +8,5 @@ import com.example.demo.Model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 	User findByEmail(String email);
+	public User findByResetPasswordToken(String token);
 }
